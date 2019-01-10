@@ -27,8 +27,10 @@
 @synthesize cipherSaltBlock = cipherSaltBlock;
 @synthesize cipherKeySpecBlock = cipherKeySpecBlock;
 @synthesize cipherUnencryptedHeaderLength = cipherUnencryptedHeaderLength;
-
-#endif
+#if SQLITE_VERSION_NUMBER >= SQLITE_VERSION_NUMBER_3_26_0
+@synthesize legacyCipherCompatibilityVersion = legacyCipherCompatibilityVersion;
+#endif // SQLITE_VERSION_NUMBER >= SQLITE_VERSION_NUMBER_3_26_0
+#endif // SQLITE_HAS_CODEC
 @synthesize aggressiveWALTruncationSize = aggressiveWALTruncationSize;
 @synthesize enableMultiProcessSupport = enableMultiProcessSupport;
 
@@ -63,7 +65,10 @@
     copy->cipherSaltBlock = cipherSaltBlock;
     copy->cipherKeySpecBlock = cipherKeySpecBlock;
     copy->cipherUnencryptedHeaderLength = cipherUnencryptedHeaderLength;
-#endif
+#if SQLITE_VERSION_NUMBER >= SQLITE_VERSION_NUMBER_3_26_0
+    copy->legacyCipherCompatibilityVersion = legacyCipherCompatibilityVersion;
+#endif // SQLITE_VERSION_NUMBER >= SQLITE_VERSION_NUMBER_3_26_0
+#endif // SQLITE_HAS_CODEC
 	copy->aggressiveWALTruncationSize = aggressiveWALTruncationSize;
     copy->enableMultiProcessSupport = enableMultiProcessSupport;
 	
